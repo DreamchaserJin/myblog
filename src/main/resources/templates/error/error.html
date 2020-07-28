@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端的预览设置，用于适配移动端-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" href="/css/myblog.css">
+    <title>后台管理</title>
+
+
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+</nav>
+
+
+<!--中间内容-->
+<br>
+<br>
+<br>
+<br>
+<div class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+        <div class="ui segment middle aligned">
+            <h1>很抱歉，你可能遇到了点错误，请联系管理员解决！</h1>
+
+        </div>
+    </div>
+</div>
+<div class="ui container m-container-small m-padded-tb-big m-opacity-mini">
+    <div th:text="'&lt;!--'" th:remove="tag" ></div>
+    <div th:text="'Failed Request URL : '+${url}" th:remove="tag"></div>
+    <div th:text="'Exception message :'+${exception.message}" th:remove="tag"></div>
+    <ul  th:remove="tag">
+        <li th:each="st : ${exception.stackTrace}" th:remove="tag"></li>
+        <span th:utext="${st}" th:remove="tag"></span>
+    </ul>
+    <div th:text="'--&gt;'" th:remove="tag" ></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer class="ui inverted vertical segment m-opacity-tiny">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="four wide column ">
+                <h4 class="ui inverted header item m-text-thin m-text-spaced m-opacity-mini" >QQ讨论群</h4>
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="/images/QRcode.png" class="ui rounded image item" style="width: 100px">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="four wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+                <div class="ui inverted link list">
+                    <p class="item m-text-lined" href="#">QQ:767564319</p>
+                    <p class="item m-text-lined" href="#">email:767564319@qq.com</p>
+                    <a class="item m-text-lined" href="https://blog.csdn.net/qq_46101869">CSDN博客</a>
+                </div>
+            </div>
+            <div class="eight wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">博客简介</h4>
+                <p class="m-text-small m-text-thin m-text-spaced m-opacity-mini" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此博客为金昊霖的个人博客。在这里，记录了我的技术博客，记录了我的经
+                    验分享，也记录了我生活的点滴，记录了我的成长。我特别喜欢一个词，那就是"追梦"，这也是我昵称的由来，同时也是我和我的团队筹备的一款app的名字
+                    。人生在世，必然会有自己的梦想，不论这个梦想是大是小，是遥不可及还是触手可得，你所要坚信的便只有一件事——有梦便一定要去追，我们都该是追梦人！不论现在处境如何，我们都要去拼一拼，不试怎么知道你会不会成功呢？愿大家都能以梦为马，不负青春韶华！</p>
+            </div>
+        </div>
+        <div class="ui divider "></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny m-text-lined">Copyright © 2020 Dreamchaser追梦 </p>
+    </div>
+</footer>
+
+
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/Semantic-UI-CSS-master/semantic.min.js"></script>
+<script type="text/javascript">
+    // $('.menu.toggle').click(function (){
+    //     $('.m-item').toggleClass('m-mobile-hide');
+    // });
+    //不知道为什么达不到预期的效果
+    $("#b1").click(function (){
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('#payButton').popup({
+        popup:$('.popup.payQR'),
+        on:'click',
+        position:'bottom center'
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    })
+</script>
+</body>
+</html>

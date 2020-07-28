@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- blog -->
+<mapper namespace="com.dreamchaser.mapper.BlogMapper">
+    <!-- 字段映射 -->
+
+    <resultMap id="blogMap" type="com.dreamchaser.pojo.Blog">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="summary" property="summary" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="date" property="date" jdbcType="TIMESTAMP" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="views" property="views" jdbcType="INTEGER" />
+        <result column="tags" property="tags" jdbcType="VARCHAR" />
+        <result column="comments" property="comments" jdbcType="VARCHAR" />
+        <result column="pictureUrl" property="pictureUrl" jdbcType="VARCHAR" />
+        <result column="isRecommend" property="isRecommend" jdbcType="INTEGER" />
+        <result column="isReprint" property="isReprint" jdbcType="INTEGER" />
+        <result column="isAppreciation" property="isAppreciation" jdbcType="INTEGER" />
+        <result column="isComment" property="isComment" jdbcType="INTEGER" />
+        <result column="property" property="property" jdbcType="INTEGER" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+    </resultMap>
+
+
+    <!-- 表查询字段 -->
+    <sql id="allColumns">
+        b.id, b.title, b.summary, b.content, b.date, b.type, b.views, b.tags, 
+        b.comments, b.pictureUrl, b.isRecommend, b.isReprint, b.isAppreciation, b.isComment, b.property, b.state
+    </sql>
+
+    <!-- 查询所有数据 -->
+    <select id="findBlogAll" resultMap="blogMap">
+        SELECT
+        <include refid="allColumns" />
+        FROM blog b
+        ORDER by b.date desc
+    </select>
+
+    <select id="findBlogAllVisible" resultMap="blogMap">
+        SELECT
+        <include refid="allColumns" />
+        FROM blog b
+        WHERE b.state=1
+        ORDER by b.date desc
+    </select>
+    
+    <!-- 根据条件参数查询数据列表 -->
+    <select id="findBlogByCondition" resultMap="blogMap" parameterType="map">
+        SELECT
+        <include refid="allColumns" />
+        FROM blog b
+        WHERE 1 = 1
+        <if test="title != null and title != ''">
+            AND b.title LIKE CONCAT('%', #{title}, '%')
+        </if>
+        <if test="summary != null and summary != ''">
+            AND b.summary LIKE CONCAT('%', #{summary}, '%')
+        </if>
+        <if test="content != null and content != ''">
+            AND b.content LIKE CONCAT('%', #{content}, '%')
+        </if>
+        <if test="date != null and date != ''">
+            AND b.date = #{date}
+        </if>
+        <if test="type != null and type != ''">
+            AND b.type = #{type}
+        </if>
+        <if test="views != null and views != ''">
+            AND b.views = #{views}
+        </if>
+        <if test="tags != null and tags != ''">
+            AND b.tags  LIKE CONCAT('%', #{tags}, '%')
+        </if>
+        <if test="comments != null and comments != ''">
+            AND b.comments = #{comments}
+        </if>
+        <if test="pictureUrl != null and pictureUrl != ''">
+            AND b.pictureUrl LIKE CONCAT('%', #{pictureUrl}, '%')
+        </if>
+        <if test="isRecommend != null and isRecommend != ''">
+            AND b.isRecommend = #{isRecommend}
+        </if>
+        <if test="isReprint != null and isReprint != ''">
+            AND b.isReprint = #{isReprint}
+        </if>
+        <if test="isAppreciation != null and isAppreciation != ''">
+            AND b.isAppreciation = #{isAppreciation}
+        </if>
+        <if test="isComment != null and isComment != ''">
+            AND b.isComment = #{isComment}
+        </if>
+        <if test="property != null and property != ''">
+            AND b.property = #{property}
+        </if>
+        <if test="state != null and state != ''">
+            AND b.state = #{state}
+        </if>
+        ORDER by b.date desc
+        <if test="begin != null and size != null">
+            LIMIT #{begin},#{size}
+        </if>
+
+    </select>
+
+
+    <!-- 根据条件参数查询数据列表 -->
+    <select id="findBlogByPage" resultMap="blogMap" parameterType="Integer">
+        SELECT
+        <include refid="allColumns" />
+        FROM blog b
+        ORDER by b.date desc
+        LIMIT #{begin} , #{size}
+    </select>
+    
+    <!-- 根据主键查询数据 -->
+    <select id="findBlogById" resultMap="blogMap" parameterType="integer">
+        SELECT
+        <include refid="allColumns" />
+        FROM blog b WHERE b.id =#{id}
+    </select>
+    <select id="findBlogIdByName" resultType="integer" parameterType="string">
+        SELECT
+        b.id
+        FROM blog b WHERE b.title =#{title}
+    </select>
+    <select id="findBlogByIds" resultMap="blogMap" parameterType="list">
+        SELECT
+        <include refid="allColumns" />
+        FROM blog b WHERE b.id IN
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    
+    <!-- 插入数据 -->
+    <insert id="insertBlog" parameterType="map">
+        INSERT INTO blog (
+            id, title, summary, content, date, type, views, tags,
+            comments, pictureUrl, isRecommend, isReprint, isAppreciation, isComment, property, state
+        ) VALUES (
+            #{id},
+            #{title},
+            #{summary},
+            #{content},
+            #{date},
+            #{type},
+            #{views},
+            #{tags},
+            #{comments},
+            #{pictureUrl},
+            #{isRecommend},
+            #{isReprint},
+            #{isAppreciation},
+            #{isComment},
+            #{property},
+            #{state}
+        )
+    </insert>
+
+    <!-- 插入数据 -->
+    <insert id="addBlog" parameterType="com.dreamchaser.pojo.Blog">
+        INSERT INTO blog (
+            id, title, summary, content, date, type, views, tags,
+            comments, pictureUrl, isRecommend, isReprint, isAppreciation, isComment, property, state
+        ) VALUES (
+            #{id},
+            #{title},
+            #{summary},
+            #{content},
+            #{date},
+            #{type},
+            #{views},
+            #{tags},
+            #{comments},
+            #{pictureUrl},
+            #{isRecommend},
+            #{isReprint},
+            #{isAppreciation},
+            #{isComment},
+            #{property},
+            #{state}
+        )
+    </insert>
+    <!-- 批量插入数据 -->
+    <insert id="insertBlogs" parameterType="list">
+        INSERT INTO blog (
+            id, title, summary, content, date, type, views, tags, 
+            comments, pictureUrl, isRecommend, isReprint, isAppreciation, isComment, property, state
+        ) VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+                #{item.id},
+                #{item.title},
+                #{item.summary},
+                #{item.content},
+                #{item.date},
+                #{item.type},
+                #{item.views},
+                #{item.tags},
+                #{item.comments},
+                #{item.pictureUrl},
+                #{item.isRecommend},
+                #{item.isReprint},
+                #{item.isAppreciation},
+                #{item.isComment},
+                #{item.property},
+                #{item.state}
+            )
+        </foreach>
+    </insert>
+    
+    <!-- 修改数据 -->
+    <update id="updateBlog" parameterType="com.dreamchaser.pojo.Blog">
+        UPDATE blog
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="summary != null">
+                summary = #{summary},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="views != null">
+                views = #{views},
+            </if>
+            <if test="tags != null">
+                tags = #{tags},
+            </if>
+            <if test="comments != null">
+                comments = #{comments},
+            </if>
+            <if test="pictureUrl != null">
+                pictureUrl = #{pictureUrl},
+            </if>
+            <if test="isRecommend != null">
+                isRecommend = #{isRecommend},
+            </if>
+            <if test="isReprint != null">
+                isReprint = #{isReprint},
+            </if>
+            <if test="isAppreciation != null">
+                isAppreciation = #{isAppreciation},
+            </if>
+            <if test="isComment != null">
+                isComment = #{isComment},
+            </if>
+            <if test="property != null">
+                property = #{property},
+            </if>
+            <if test="state != null">
+                state = #{state}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    
+    <!-- 批量修改数据 -->
+    <update id="updateBlogs" parameterType="list">
+        <foreach collection="list" index="index" item="item" separator=";">
+            UPDATE blog
+            <set>
+                <if test="item.title != null">
+                    title = #{item.title},
+                </if>
+                <if test="item.summary != null">
+                    summary = #{item.summary},
+                </if>
+                <if test="item.content != null">
+                    content = #{item.content},
+                </if>
+                <if test="item.date != null">
+                    date = #{item.date},
+                </if>
+                <if test="item.type != null">
+                    type = #{item.type},
+                </if>
+                <if test="item.views != null">
+                    views = #{item.views},
+                </if>
+                <if test="item.tags != null">
+                    tags = #{item.tags},
+                </if>
+                <if test="item.comments != null">
+                    comments = #{item.comments},
+                </if>
+                <if test="item.pictureUrl != null">
+                    pictureUrl = #{item.pictureUrl},
+                </if>
+                <if test="item.isRecommend != null">
+                    isRecommend = #{item.isRecommend},
+                </if>
+                <if test="item.isReprint != null">
+                    isReprint = #{item.isReprint},
+                </if>
+                <if test="item.isAppreciation != null">
+                    isAppreciation = #{item.isAppreciation},
+                </if>
+                <if test="item.isComment != null">
+                    isComment = #{item.isComment},
+                </if>
+                <if test="item.property != null">
+                    property = #{item.property},
+                </if>
+                <if test="item.state != null">
+                    state = #{item.state}
+                </if>
+            </set>
+            WHERE id = #{item.id}
+        </foreach>
+    </update>
+    
+    <!-- 根据主键删除数据 -->
+    <delete id="deleteBlogById" parameterType="int">
+        DELETE FROM blog WHERE id = #{id}
+    </delete>
+    
+    <!-- 根据主键批量删除数据 -->
+    <delete id="deleteBlogByIds" parameterType="list">
+        DELETE FROM blog WHERE id IN
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

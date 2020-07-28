@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- tag -->
+<mapper namespace="com.dreamchaser.mapper.TagMapper">
+    <!-- 字段映射 -->
+    <resultMap id="tagMap" type="com.dreamchaser.pojo.Tag">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="number" property="number" jdbcType="INTEGER" />
+        <result column="date" property="date" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <!-- 表查询字段 -->
+    <sql id="allColumns">
+        t.id, t.name, t.number, t.date
+    </sql>
+
+    <!-- 查询所有数据 -->
+    <select id="findTagAll" resultMap="tagMap">
+        SELECT
+        <include refid="allColumns" />
+        FROM tag t
+    </select>
+
+    <select id="findTagByPage" resultMap="tagMap" parameterType="map">
+        SELECT
+        <include refid="allColumns" />
+        FROM tag t WHERE 1=1
+        <if test="name != null and name != ''">
+            AND t.name = #{name}
+        </if>
+        ORDER by t.date desc
+        LIMIT #{begin} , #{size}
+    </select>
+    
+    <!-- 根据条件参数查询数据列表 -->
+    <select id="findTagByCondition" resultMap="tagMap" parameterType="map">
+        SELECT
+        <include refid="allColumns" />
+        FROM tag t WHERE 1 = 1
+        <if test="name != null and name != ''">
+            AND t.name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="number != null">
+            AND t.number = #{number}
+        </if>
+        <if test="date != null">
+            AND t.date = #{date}
+        </if>
+    </select>
+    
+    <!-- 根据主键查询数据 -->
+    <select id="findTagById" resultMap="tagMap" parameterType="integer">
+        SELECT
+        <include refid="allColumns" />
+        FROM tag t WHERE t.id = #{id}
+    </select>
+    <select id="findTagByIds" resultMap="tagMap" parameterType="list">
+        SELECT
+        <include refid="allColumns" />
+        FROM tag t WHERE t.id IN
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    
+    <!-- 插入数据 -->
+    <insert id="insertTag" parameterType="com.dreamchaser.pojo.Tag">
+        INSERT INTO tag (
+            id, name, number, date
+        ) VALUES (
+            #{id},
+            #{name},
+            #{number},
+            #{date}
+        )
+    </insert>
+    
+    <!-- 批量插入数据 -->
+    <insert id="insertTags" parameterType="list">
+        INSERT INTO tag (
+            id, name, number, date
+        ) VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+                #{item.id},
+                #{item.name},
+                #{item.number},
+                #{item.date}
+            )
+        </foreach>
+    </insert>
+    
+    <!-- 修改数据 -->
+    <update id="updateTag" parameterType="com.dreamchaser.pojo.Tag">
+        UPDATE tag
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="number != null">
+                number = #{number},
+            </if>
+            <if test="date != null">
+                date = #{date}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    
+    <!-- 批量修改数据 -->
+    <update id="updateTags" parameterType="list">
+        <foreach collection="list" index="index" item="item" separator=";">
+            UPDATE tag
+            <set>
+                <if test="item.name != null">
+                    name = #{item.name},
+                </if>
+                <if test="item.number != null">
+                    number = #{item.number},
+                </if>
+                <if test="item.date != null">
+                    date = #{item.date}
+                </if>
+            </set>
+            WHERE id = #{item.id}
+        </foreach>
+    </update>
+    
+    <!-- 根据主键删除数据 -->
+    <delete id="deleteTagById" parameterType="integer">
+        DELETE FROM tag WHERE id = #{id}
+    </delete>
+    
+    <!-- 根据主键批量删除数据 -->
+    <delete id="deleteTagByIds" parameterType="list">
+        DELETE FROM tag WHERE id IN
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

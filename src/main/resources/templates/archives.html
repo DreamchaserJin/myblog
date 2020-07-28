@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <!--移动端的预览设置，用于适配移动端-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" href="/css/myblog.css">
+    <title>归档</title>
+
+
+</head>
+<body>
+    <!--导航-->
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary menu stackable">
+                <h2 class="ui teal header item">Blog</h2>
+                <a href="/index" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+                <a href="/page_types" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="/page_tags" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="/archives" class="m-item item m-mobile-hide active"><i class="clone icon"></i>归档</a>
+                <a href="/about" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+                <div class="m-item right item  m-mobile-hide">
+                    <form action="/search" method="get">
+                        <div class="ui action input inverted transparent ">
+                            <input type="text" name="title" placeholder="search...">
+                            <button class="ui icon button" type="submit">
+                                <i class="search icon"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a id="b1" href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <!--中间内容-->
+    <div class="m-container-small m-padded-tb-big m-opacity-mini">
+        <div class="ui container ">
+            <!--头部-->
+            <div class="ui segment  padded rounded">
+                <div class="ui middle aligned grid two column rounded">
+                    <div class="column">
+                        <h3 class="ui header teal">归档</h3>
+                    </div>
+                    <div class="column right aligned">
+                        共<h2 class="ui orange header m-inline-block mth" th:text="'&nbsp;'+${number}+'&nbsp;'">&nbsp;14&nbsp; </h2>篇博客
+                    </div>
+                </div>
+            </div>
+            <div th:each="year,iter:${years}" >
+                <h2 class="ui header center aligned" th:text="${year.key}">2020</h2>
+                <div class="ui vertical menu fluid">
+                    <a th:href="@{'/page_blog/'+${blog.getId()}}" class="item" target="_blank" th:each="blog,iter1:${year.value}">
+                    <span>
+                        <i class="ui small teal circle icon " ></i> <span th:text="${blog.getTitle()}">【一年总结】记我的大一生活</span>
+                        <div class="ui teal basic left pointing label m-padded-mini" th:text="${#dates.format(blog.getDate(),'MM月dd')}">7月04</div>
+                    </span>
+                        <div class="ui orange basic left pointing label m-padded-mini right aligned" th:switch="${blog.getProperty()}">
+                            <span th:case="1">原创</span>
+                            <span th:case="2">转载</span>
+                            <span th:case="3">翻译</span>
+                        </div>
+                    </a>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!--底部footer-->
+    <footer class="ui inverted vertical segment m-opacity-tiny">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="two wide column ">
+                    <h4 class="ui inverted header item m-text-thin m-text-spaced m-opacity-mini" >QQ讨论群</h4>
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="/images/QRcode.png" class="ui rounded image item" style="width: 100px">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="five wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a class="item m-text-lined" th:each="newBlog,iter:${newBlogs}" th:href="@{'/page_blog/'+${newBlog.getId()}}" th:text="${newBlog.getTitle()}">博客1</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+                    <div class="ui inverted link list">
+                        <p class="item m-text-lined" href="#">QQ:767564319</p>
+                        <p class="item m-text-lined" href="#">email:767564319@qq.com</p>
+                        <a class="item m-text-lined" href="https://blog.csdn.net/qq_46101869">CSDN博客</a>
+                    </div>
+                </div>
+                <div class="six wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">博客简介</h4>
+                    <p class="m-text-small m-text-thin m-text-spaced m-opacity-mini" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此博客为金昊霖的个人博客。在这里，记录了我的技术博客，记录了我的经
+                        验分享，也记录了我生活的点滴，记录了我的成长。我特别喜欢一个词，那就是"追梦"，这也是我昵称的由来，同时也是我和我的团队筹备的一款app的名字
+                        。人生在世，必然会有自己的梦想，不论这个梦想是大是小，是遥不可及还是触手可得，你所要坚信的便只有一件事——有梦便一定要去追，我们都该是追梦人！不论现在处境如何，我们都要去拼一拼，不试怎么知道你会不会成功呢？愿大家都能以梦为马，不负青春韶华！</p>
+                </div>
+            </div>
+            <div class="ui divider "></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny m-text-lined">Copyright © 2020 Dreamchaser追梦 </p>
+        </div>
+    </footer>
+
+
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/Semantic-UI-CSS-master/semantic.min.js"></script>
+<script type="text/javascript">
+// $('.menu.toggle').click(function (){
+//     $('.m-item').toggleClass('m-mobile-hide');
+// });
+//不知道为什么达不到预期的效果
+    $("#b1").click(function (){
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('#payButton').popup({
+    popup:$('.popup.payQR'),
+    on:'click',
+    position:'bottom center'
+    })
+
+</script>
+</body>
+</html>
