@@ -2,7 +2,7 @@
 
 ### 1.项目背景
 
-此项目并非原创，项目原型是李仁密老师的作品，具体的教学视频来自b站https://www.bilibili.com/video/BV1nE411r7TF，不过up主貌似也是搬运的。
+此项目并非原创，项目原型是李仁密老师的作品，具体的教学视频来自b站[地址http://https://www.bilibili.com/video/BV1nE411r7TF)，不过up主貌似也是搬运的。
 此个人博客前端是模仿李仁密老师的，其中，我根据自身需求做出了部分修改。
 因为我是主后端的，所以想借此机会来锻炼自己，所以后端部分完全由自己来设计编写（不过异常的控制器和博客内容转html这部分是借鉴了李仁密老师的）。
 为此在完成项目并测试之后我写了这篇博文来记录我的项目思路和遇到的一些问题，对于一些想学习SpringBoot，SSM，thymeleaf，semantic UI的人来说，这应该是个很好的练手项目。
@@ -118,7 +118,7 @@ user表结构：
 
 ![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0728/185555_db34b958_7594071.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726120515368.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111645_df5f0dcf_7594071.png)
 
 ![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0728/185555_9ccdb1d6_7594071.png)
 
@@ -166,7 +166,7 @@ user表结构：
 
 首先，我把评论comment赋予以下几个属性 id，name，email，blog，isAdmin，content，time，parent。
 前面几个属性好理解，无非就是存储评论的用户昵称，邮箱，评论内容之类。最后一个parent表示什么呢？其实这个parent使用用来存储评论与评论之间的关系的，它是int类型，主要存储父评论的id。如果没有父评论，那么则用-1存储以示区别。这样我们就可以分清以及评论和二级评论了。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726155830894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)不过这还是我偷懒的情况，因为在二级评论里你会发现没有回复按钮。
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111645_fdd91a26_7594071.png)不过这还是我偷懒的情况，因为在二级评论里你会发现没有回复按钮。
 实际上是被我删了，用@XXX代替，不然加了这按钮，这逻辑会复杂很多，存储起来也很麻烦。反正主要的效果都能达到，不如删去些细枝末节的东西来简化逻辑（好吧，我承认是我偷懒了QAQ）。
 ### 4.区分博主和普通游客的评论
 有人可能会问：为什么要区分博主和普通游客的评论？
@@ -190,10 +190,10 @@ user表结构：
 这对前端老手根本不是什么问题，但对于我这个前端菜鸟来说要解决就有点烦了。
 这时候我想到了个取巧的方法，利用thymeleaf模板引擎中的if和switch，case来间接达到选中的效果。
 举个例子，
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726162119388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)在分类专栏上有这么一个需求，点击相应分页然后返回相应分类下的博客。然后切换分类的选中效果。
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111645_15bf869b_7594071.png)在分类专栏上有这么一个需求，点击相应分页然后返回相应分类下的博客。然后切换分类的选中效果。
 
 我的做法就是后端传数据的时候就传入一个全局的数据，比如这里就是typeId，渲染分类栏的时候，通过if比较typeId是否一致如果一致就采用选中状态，如果不是就采用非选中状态
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726162450373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111645_8210d86f_7594071.png)
 这样就能巧妙的间接实现选中效果切换的目的。
 
 但对于前端大佬来说可能会不屑一顾，不过对于我这种不善前端的人来说，那确实对我还是蛮方便的。
@@ -238,7 +238,7 @@ user表结构：
 > 引入图标，可以去http://www.fontawesome.com.cn/icons中找，因为semantic底层也是用它的图标库，不过引用是原来是fa-angle-double-right，改成angle
 > double right icon即可
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726163621464.png)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111645_c7583c66_7594071.png)
 这里我们就可以知道页面jquery.js的引用位置问题，如果导入了其它与jquery有关的js文件,那么jquery.js须在其它js的前面。
 所以jquery.js文件的引用必须在semantic UI 的前面。
 
@@ -249,9 +249,9 @@ user表结构：
 
 当我近乎绝望的时候，我意外的发现了原因
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726164709558.png)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111645_6f6db743_7594071.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726164639540.png)这两者是有区别的！不然你的js操作都没用。。。后者才能成功导入，不能以/>结尾。别问我为什么知道的！问就是老天可怜我的！
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_9238a2aa_7594071.png)这两者是有区别的！不然你的js操作都没用。。。后者才能成功导入，不能以/>结尾。别问我为什么知道的！问就是老天可怜我的！
 
 ### 2.maven项目的静态资源问题
 当你发现SpringBoot给你报无数据源，可你明明在配置中配置了时，不要怀疑，点开target文件，看看里面是否有你的配置文件！
@@ -284,11 +284,11 @@ SpringBoot项目实际上也是maven项目，其项目结构完全参照maven的
 </resource>
 ```
 当然为了一劳永逸我采取的是这种把所有在resource文件夹下文件全部扫描的方式
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726165704925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_f6c55621_7594071.png)
 
 ### 3.SpringBoot项目的路径问题
 在SpringBoot中，引用的文件路径直接写成
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726165832306.png)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_181807b1_7594071.png)
 
 不用在前面加上static，且不用../的形式。
 
@@ -297,7 +297,7 @@ SpringBoot项目实际上也是maven项目，其项目结构完全参照maven的
 
 解决办法：在实体类定义的时候就给它一个初始化的默认值，这样就不会为空了。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726170002953.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_cdd746cb_7594071.png)
 
 ### 5.mybatis框架报数组越界
 一开始我还很奇怪mybatis框架怎么会报数组越界呢？
@@ -307,8 +307,8 @@ SpringBoot项目实际上也是maven项目，其项目结构完全参照maven的
 其实SpringBoot已经有相应的措施，原理就是SpringBoot默认维护了一个WebMvcAutoConfiguration，其中如果有_method就改变请求方式，不过SpringBoot项目得在配置中开启，默认是关闭的 
 
 这时候你要做就是在配置中将这个类设置为true
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726172014202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)然后再前端表单中加入这么一句即可。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726172211627.png)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_fa1a7441_7594071.png)然后再前端表单中加入这么一句即可。
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_729d6e6c_7594071.png)
 
 
 
@@ -3641,19 +3641,19 @@ mybatis:
 这部分其实我不想写的，因为前言里提到了，全部展示出来又太费空间，这里就展示一部分前言里没提到过的效果图
 
 ### 登录页
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726173954273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_ab306d7f_7594071.png)
 
 登录失败效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174033895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_508e260c_7594071.png)
 ### 博客管理页
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174211168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_61df6ef6_7594071.png)
 ### 评论管理
 #### 列表页
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174311880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_ae7c990c_7594071.png)
 #### 详情页
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174404308.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_e2c9f6d3_7594071.png)
 ### 归档页
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174544957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111646_04edaa28_7594071.png)
 ## 九、博客部署
 此部分以后再补，服务器还没租呢QAQ
 
