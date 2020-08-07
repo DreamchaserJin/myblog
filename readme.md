@@ -1,21 +1,21 @@
 ## 一、前言
+
 ### 1.项目背景
 
-此项目并非原创，项目原型是李仁密老师的作品，具体的教学视频来自b站[SpringBoot开发一个小而美的个人博客](https://www.bilibili.com/video/BV1nE411r7TF)，
-不过up主貌似也是搬运的。
+此项目并非原创，项目原型是李仁密老师的作品，具体的教学视频来自b站https://www.bilibili.com/video/BV1nE411r7TF，不过up主貌似也是搬运的。
 此个人博客前端是模仿李仁密老师的，其中，我根据自身需求做出了部分修改。
 因为我是主后端的，所以想借此机会来锻炼自己，所以后端部分完全由自己来设计编写（不过异常的控制器和博客内容转html这部分是借鉴了李仁密老师的）。
 为此在完成项目并测试之后我写了这篇博文来记录我的项目思路和遇到的一些问题，对于一些想学习SpringBoot，SSM，thymeleaf，semantic UI的人来说，这应该是个很好的练手项目。
 
 ### 2.部分效果图展示
 话不多说，先放几张效果图展示一下项目
-![请添加图片描述](https://images.gitee.com/uploads/images/2020/0729/111811_641aca2f_7594071.png)
-![请添加图片描述](https://images.gitee.com/uploads/images/2020/0729/111811_30269976_7594071.png)
-![请添加图片描述](https://images.gitee.com/uploads/images/2020/0729/111811_e0d794ff_7594071.png)
-![请添加图片描述](https://images.gitee.com/uploads/images/2020/0729/111811_3f10ad1c_7594071.png)
-![请添加图片描述](https://images.gitee.com/uploads/images/2020/0729/111811_f5de9e29_7594071.png)
+![请添加图片描述](https://img-blog.csdnimg.cn/20200726101821672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![请添加图片描述](https://img-blog.csdnimg.cn/20200726101819147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![请添加图片描述](https://img-blog.csdnimg.cn/20200726101819826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![请添加图片描述](https://img-blog.csdnimg.cn/20200726101819953.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![请添加图片描述](https://img-blog.csdnimg.cn/20200726101820787.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
-![请添加图片描述](https://images.gitee.com/uploads/images/2020/0729/111811_2e773e52_7594071.png)
+![请添加图片描述](https://img-blog.csdnimg.cn/20200726101822443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 ## 二、项目总述
 
@@ -45,31 +45,31 @@ lombok(简化部分代码插件)、animate.css-master(动画效果)、editor.md-
 
 以下当时完成的前端页面：
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111812_54079b8f_7594071.png)![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111811_713d0183_7594071.png)![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111812_bc5a35da_7594071.png)    
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726104104678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/2020072610422915.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726104318836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)    
 
 ### 2.总览项目，抽象功能，化为实体，画出设计图
 这时候我还并没有开始写代码，而是把接下来要怎么做写个粗略的文档并画出相应的设计图（不过这也是我的习惯，我喜欢在写代码前先把思路写好，再去写代码，虽然写文档的时候确实会花一些时间，不过写代码的时候思路会很清晰，这会省下不少时间，并且能让你的代码结构清晰不少）
 
 因为我写完前端的页面（不过后台只写了两张），所以先把所需的前端页面画出，再把这些页面汇总得到我第一张设计图——前端页面设计图
-![前端页面设计](https://images.gitee.com/uploads/images/2020/0729/111812_9b63f2bf_7594071.png)
+![前端页面设计](https://img-blog.csdnimg.cn/2020072610523927.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 
 然后我就根据页面来分析我需要的功能，由此我画出了第二张设计图
-![根据页面写出功能](https://images.gitee.com/uploads/images/2020/0729/111812_64c00d01_7594071.png)随后我根据这些功能抽象分离，并划分所需的类，由此我得到了第三张设计图——UML图
-![UML图](https://images.gitee.com/uploads/images/2020/0729/111812_dff3b40c_7594071.png)
+![根据页面写出功能](https://img-blog.csdnimg.cn/20200726105055808.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)随后我根据这些功能抽象分离，并划分所需的类，由此我得到了第三张设计图——UML图
+![UML图](https://img-blog.csdnimg.cn/20200726105525456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 ### 3.建库建表
 
 至此，项目结构大致清晰了。根据这个类的划分我利用Navicat开始建表（当然PowerDeigner是个很好用的工具，可以让你在一边设计的同时完成建表的工作，但无奈我不太会用，所以采取原始的方式）。
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111812_758b8f69_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726105853285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 ### 4.搭建框架结构
 
 建完表后我开始搭建框架，先把最基础的那些建出来，分出最基本的Mapper（Dao）层、Service层、Controller层，pojo层（实体类），然后把写好的前端页面给搬过来，再配置所需要的依赖。经过一系列操作后，最基础的框架搭成了（SpringBoot已经简化了很多很多，这个操作还是蛮快的）。
 
 然后再借助tablego神器，直接生成实体类和相应的mapper文件（当然接口还是要自己写的）
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111812_0dc68fdd_7594071.png)然后再对接口加些基本的增删改查操作。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726110633679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)然后再对接口加些基本的增删改查操作。
 
 到此基本的框架已经出来了，接下来的不过是根据页面实现相应的功能。
 
@@ -87,16 +87,16 @@ lombok(简化部分代码插件)、animate.css-master(动画效果)、editor.md-
 **所以你需要记住架构的时候千万要架构好，不然等你写代码的时候再来改，那改的成本就不是一星半点儿了。**
 
 后来针对页面做出了点调整和优化，将修改页和新增页合为一体，随后修改了我的设计图
-![前端设计图（修改后）](https://images.gitee.com/uploads/images/2020/0729/111812_b23a6f17_7594071.png)
+![前端设计图（修改后）](https://img-blog.csdnimg.cn/20200726113411208.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
-![根据页面写出功能（修改后）](https://images.gitee.com/uploads/images/2020/0729/111812_e87f11cc_7594071.png)再往后，就是一步一步写相应页面的代码了，一开始遇到很多问题，写了两个页面就花了我四天，不过解决了相应的问题后，后面的页面就写的很快了，前前后后花了半个月时间，终于完成。在这个过程中我查了无数的博客，学到了很多很多，**不得不说项目时最好的提升方式**。
+![根据页面写出功能（修改后）](https://img-blog.csdnimg.cn/20200726113417168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)再往后，就是一步一步写相应页面的代码了，一开始遇到很多问题，写了两个页面就花了我四天，不过解决了相应的问题后，后面的页面就写的很快了，前前后后花了半个月时间，终于完成。在这个过程中我查了无数的博客，学到了很多很多，**不得不说项目时最好的提升方式**。
 
 哦，对了，跟你们分享一下我的习惯，我写代码的时候一般都会把遇到的问题记录下来，做出总结，前一天没有完成的任务我也会记录下来，以便第二天工作的开展，以下是我制作博客的文件夹
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111812_c2896a37_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726121956120.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 甚至是我在写这篇博客的时候我都提前写个简单的大纲，避免思路的中断
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_3114e1fb_7594071.png)这样的习惯对于我而言还是蛮好的，它让我执行重要事情的时候可以更有条理，不会有那种大敌当前却手忙脚乱的感觉。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020072612202269.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)这样的习惯对于我而言还是蛮好的，它让我执行重要事情的时候可以更有条理，不会有那种大敌当前却手忙脚乱的感觉。
 
 
 
@@ -105,22 +105,22 @@ lombok(简化部分代码插件)、animate.css-master(动画效果)、editor.md-
 ### 1.数据库结构
 库名：myblog
 blog表结构：
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_eb97dbc7_7594071.png)comment表结构：
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_ea1a18f3_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726115856995.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)comment表结构：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726115926363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 type表结构：
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_fbb334b7_7594071.png)tag表结构：
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_2d267b98_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726120035790.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)tag表结构：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726120109473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 user表结构：
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_5002750f_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726120155299.png)
 
 ### 2.项目结构
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_336e1a02_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726120343467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_498da77b_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726120454753.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_83f36aef_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726120515368.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_03848cff_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020072612055884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 标准的SpringBoot结构！
 
@@ -132,13 +132,13 @@ user表结构：
 我这里采用的是一种比较常规的手法，那就是拦截器+session的组合。
 
 首先写个拦截器，对所有访问后台的请求进行拦截，如果该请求的session中没有user对象，则拦截并将其重定向到登录页面（这里要注意登录页面不能被自己给拦截了）。如果存在该user对象，则放行通过
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111813_4b50cb84_7594071.png)登录的时候验证管理员账户密码，如果正确就在session中加入该对象。当然还有一种情况就是用户什么也不输入直接提交，如果不对这种情况加以处理，那么数据库就会报错。我采取的方法是前端进行非空验证。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020072615142020.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)登录的时候验证管理员账户密码，如果正确就在session中加入该对象。当然还有一种情况就是用户什么也不输入直接提交，如果不对这种情况加以处理，那么数据库就会报错。我采取的方法是前端进行非空验证。
 
 当然后台也可以注销，即销毁session中的user对象。
 
 用流程图演示就是下面这样
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_e64dfe79_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726153440230.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 
 
@@ -166,7 +166,7 @@ user表结构：
 
 首先，我把评论comment赋予以下几个属性 id，name，email，blog，isAdmin，content，time，parent。
 前面几个属性好理解，无非就是存储评论的用户昵称，邮箱，评论内容之类。最后一个parent表示什么呢？其实这个parent使用用来存储评论与评论之间的关系的，它是int类型，主要存储父评论的id。如果没有父评论，那么则用-1存储以示区别。这样我们就可以分清以及评论和二级评论了。
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_2147d59c_7594071.png)不过这还是我偷懒的情况，因为在二级评论里你会发现没有回复按钮。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726155830894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)不过这还是我偷懒的情况，因为在二级评论里你会发现没有回复按钮。
 实际上是被我删了，用@XXX代替，不然加了这按钮，这逻辑会复杂很多，存储起来也很麻烦。反正主要的效果都能达到，不如删去些细枝末节的东西来简化逻辑（好吧，我承认是我偷懒了QAQ）。
 ### 4.区分博主和普通游客的评论
 有人可能会问：为什么要区分博主和普通游客的评论？
@@ -190,10 +190,10 @@ user表结构：
 这对前端老手根本不是什么问题，但对于我这个前端菜鸟来说要解决就有点烦了。
 这时候我想到了个取巧的方法，利用thymeleaf模板引擎中的if和switch，case来间接达到选中的效果。
 举个例子，
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_c8f2f196_7594071.png)在分类专栏上有这么一个需求，点击相应分页然后返回相应分类下的博客。然后切换分类的选中效果。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726162119388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)在分类专栏上有这么一个需求，点击相应分页然后返回相应分类下的博客。然后切换分类的选中效果。
 
 我的做法就是后端传数据的时候就传入一个全局的数据，比如这里就是typeId，渲染分类栏的时候，通过if比较typeId是否一致如果一致就采用选中状态，如果不是就采用非选中状态
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_ac2a5cb8_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726162450373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 这样就能巧妙的间接实现选中效果切换的目的。
 
 但对于前端大佬来说可能会不屑一顾，不过对于我这种不善前端的人来说，那确实对我还是蛮方便的。
@@ -238,7 +238,7 @@ user表结构：
 > 引入图标，可以去http://www.fontawesome.com.cn/icons中找，因为semantic底层也是用它的图标库，不过引用是原来是fa-angle-double-right，改成angle
 > double right icon即可
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_f8ea7ead_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726163621464.png)
 这里我们就可以知道页面jquery.js的引用位置问题，如果导入了其它与jquery有关的js文件,那么jquery.js须在其它js的前面。
 所以jquery.js文件的引用必须在semantic UI 的前面。
 
@@ -249,9 +249,9 @@ user表结构：
 
 当我近乎绝望的时候，我意外的发现了原因
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_88fdba7b_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726164709558.png)
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_b3a69519_7594071.png)这两者是有区别的！不然你的js操作都没用。。。后者才能成功导入，不能以/>结尾。别问我为什么知道的！问就是老天可怜我的！
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726164639540.png)这两者是有区别的！不然你的js操作都没用。。。后者才能成功导入，不能以/>结尾。别问我为什么知道的！问就是老天可怜我的！
 
 ### 2.maven项目的静态资源问题
 当你发现SpringBoot给你报无数据源，可你明明在配置中配置了时，不要怀疑，点开target文件，看看里面是否有你的配置文件！
@@ -284,11 +284,11 @@ SpringBoot项目实际上也是maven项目，其项目结构完全参照maven的
 </resource>
 ```
 当然为了一劳永逸我采取的是这种把所有在resource文件夹下文件全部扫描的方式
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_2793158e_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726165704925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 ### 3.SpringBoot项目的路径问题
 在SpringBoot中，引用的文件路径直接写成
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_2db56c02_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726165832306.png)
 
 不用在前面加上static，且不用../的形式。
 
@@ -297,7 +297,7 @@ SpringBoot项目实际上也是maven项目，其项目结构完全参照maven的
 
 解决办法：在实体类定义的时候就给它一个初始化的默认值，这样就不会为空了。
 
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_b676dde7_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726170002953.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 ### 5.mybatis框架报数组越界
 一开始我还很奇怪mybatis框架怎么会报数组越界呢？
@@ -307,8 +307,8 @@ SpringBoot项目实际上也是maven项目，其项目结构完全参照maven的
 其实SpringBoot已经有相应的措施，原理就是SpringBoot默认维护了一个WebMvcAutoConfiguration，其中如果有_method就改变请求方式，不过SpringBoot项目得在配置中开启，默认是关闭的 
 
 这时候你要做就是在配置中将这个类设置为true
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_a9e60d0d_7594071.png)然后再前端表单中加入这么一句即可。
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_5b8ad035_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726172014202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)然后再前端表单中加入这么一句即可。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726172211627.png)
 
 
 
@@ -3641,21 +3641,65 @@ mybatis:
 这部分其实我不想写的，因为前言里提到了，全部展示出来又太费空间，这里就展示一部分前言里没提到过的效果图
 
 ### 登录页
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_a2cbfb43_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726173954273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
 登录失败效果
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_009c50a6_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174033895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 ### 博客管理页
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111814_4cf76040_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174211168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 ### 评论管理
 #### 列表页
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111815_715bf3a9_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174311880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 #### 详情页
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111815_a8f54d80_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174404308.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 ### 归档页
-![在这里插入图片描述](https://images.gitee.com/uploads/images/2020/0729/111815_931aa051_7594071.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174544957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 ## 九、博客部署
-此部分以后再补，服务器还没租呢QAQ
+这个部分我从租服务器开始讲，直至部署完成！
+### 1、租服务器
+这里我选择阿里云的服务器来进行演示
+首先把你的账号注册完后打开活动页面，找到云翼计划（因为我是学生，有学生优惠），选择你需要的服务器，我这里选择的是ecs云服务器。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151040954.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)购买支付后打开实例详情
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151655763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+### 2、连接服务器
+点击更多设置你的密码，然后复制公网ip，打开远程桌面连接
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151815714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)输入你的用户名（windows用户名默认是administrator，linux默认是root）和密码即可远程连接至服务器。
+
+### 3、配置服务器环境
+开始安装mysql数据库，以下是下载地址
+https://dev.mysql.com/downloads/file/?id=497106
+
+具体操作看这篇博文
+https://blog.csdn.net/NOWSHUT/article/details/107722623
+
+安装Navicat，创建myblog数据库，在此数据库中运行sql文件
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152410985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+
+把你的jdk复制粘贴至服务器，然后配上环境变量
+
+### 4.把项目打成jar包发布至服务器
+在pom.xml中把打包方式设置为jar（`<packaging>jar</packaging>`
+），使用package命令，然后你的target目录下就会出现一个jar文件
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152549638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+将其复制粘贴至服务器上，选择你想要的存储的文件夹下，这里我直接选择c盘（不过建议大家还是创建个文件夹比较好）
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152745642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+在上面地址栏中输入cmd打开命令行，
+输入：java -jar blog.jar
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152946507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)启动成功！
+
+### 5.设置服务器安全组
+其实就是设置外网能访问的端口，
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020080715311658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807153121357.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+
+不知道怎么打开这个界面的可以看这里https://developer.aliyun.com/article/702814
+
+### 6、访问项目
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807153336115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+博客部署成功了！
+
 
 ## 十、总结和收获
 这个人博客系统总计耗时半个月，前端页面花了3天，后端设计编写花了12天。总计好多行代码QAQ
@@ -3670,12 +3714,14 @@ mybatis:
 
 这也算是我正式写app后端之前的一种锻炼吧！
 
-该项目已上传至码云，[项目地址](https://gitee.com/dreamchasers/myblog)，需要的可以自行下载，对Java学习感兴趣的也可以加入q群1028457867，我们一起交流学习！
-
 
 也希望未来的我能不忘初心，砥砺前行！
 
 谨以此记，共勉！
+
+该项目源码已上传至码云，[项目地址](https://gitee.com/dreamchasers/myblog)，需要的可以自行下载，对Java学习感兴趣的也可以加入q群1028457867，我们一起交流学习！
+
+最后，欢迎访问我的博客http://121.41.231.230:9090/index
 
 如果对此项目有什么疑惑或者建议，欢迎大家在评论区评论指正。
 
