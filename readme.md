@@ -3655,7 +3655,51 @@ mybatis:
 ### 归档页
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174544957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 ## 九、博客部署
-此部分以后再补，服务器还没租呢QAQ
+这个部分我从租服务器开始讲，直至部署完成！
+### 1、租服务器
+这里我选择阿里云的服务器来进行演示
+首先把你的账号注册完后打开活动页面，找到云翼计划（因为我是学生，有学生优惠），选择你需要的服务器，我这里选择的是ecs云服务器。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151040954.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)购买支付后打开实例详情
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151655763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+### 2、连接服务器
+点击更多设置你的密码，然后复制公网ip，打开远程桌面连接
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151815714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)输入你的用户名（windows用户名默认是administrator，linux默认是root）和密码即可远程连接至服务器。
+
+### 3、配置服务器环境
+开始安装mysql数据库，以下是下载地址
+https://dev.mysql.com/downloads/file/?id=497106
+
+具体操作看这篇博文
+https://blog.csdn.net/NOWSHUT/article/details/107722623
+
+安装Navicat，创建myblog数据库，在此数据库中运行sql文件
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152410985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+
+把你的jdk复制粘贴至服务器，然后配上环境变量
+
+### 4.把项目打成jar包发布至服务器
+在pom.xml中把打包方式设置为jar（`<packaging>jar</packaging>`
+），使用package命令，然后你的target目录下就会出现一个jar文件
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152549638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+将其复制粘贴至服务器上，选择你想要的存储的文件夹下，这里我直接选择c盘（不过建议大家还是创建个文件夹比较好）
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152745642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+在上面地址栏中输入cmd打开命令行，
+输入：java -jar blog.jar
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152946507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)启动成功！
+
+### 5.设置服务器安全组
+其实就是设置外网能访问的端口，
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020080715311658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807153121357.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+
+不知道怎么打开这个界面的可以看这里https://developer.aliyun.com/article/702814
+
+### 6、访问项目
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807153336115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+博客部署成功了！
+
 
 ## 十、总结和收获
 这个人博客系统总计耗时半个月，前端页面花了3天，后端设计编写花了12天。总计好多行代码QAQ
@@ -3670,9 +3714,14 @@ mybatis:
 
 这也算是我正式写app后端之前的一种锻炼吧！
 
+
 也希望未来的我能不忘初心，砥砺前行！
 
 谨以此记，共勉！
+
+该项目源码已上传至码云，[项目地址](https://gitee.com/dreamchasers/myblog)，需要的可以自行下载，对Java学习感兴趣的也可以加入q群1028457867，我们一起交流学习！
+
+最后，欢迎访问我的博客http://121.41.231.230:9090/index
 
 如果对此项目有什么疑惑或者建议，欢迎大家在评论区评论指正。
 
