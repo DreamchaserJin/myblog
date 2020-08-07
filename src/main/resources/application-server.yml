@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: jinhaolin
-    url: jdbc:mysql://localhost:3306/myblog?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://121.41.231.230:3306/myblog?serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5

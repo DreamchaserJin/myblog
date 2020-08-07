@@ -16,8 +16,7 @@ import java.util.Map;
 @Controller
 public class UserController {
 
-    @Autowired
-    HttpServletRequest request;
+
     @Autowired
     UserService userService;
 
@@ -41,7 +40,7 @@ public class UserController {
         ModelAndView modelAndView=new ModelAndView();
         session.removeAttribute("user");
         modelAndView.addObject("message","用户退出成功!");
-        modelAndView.setViewName("/admin/tip");
+        modelAndView.setViewName("admin/tip");
         return modelAndView;
     }
 }

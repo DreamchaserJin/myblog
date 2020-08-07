@@ -35,7 +35,7 @@ public class PageController {
 
     @GetMapping("/login")
     public String login(){
-        return "/admin/login";
+        return "admin/login";
     }
 
     @GetMapping("/admin/blog-input")
