@@ -17,7 +17,7 @@ public class Tag implements java.io.Serializable {
     private String name;
 
     /** 博客数量 */
-    private Integer number;
+    private Integer number=0;
 
     /** 更新时间 */
     private Date date;

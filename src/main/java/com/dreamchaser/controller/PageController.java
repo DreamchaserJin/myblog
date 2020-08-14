@@ -176,7 +176,7 @@ public class PageController {
             map.replace("begin",0);
         }
         if (map.get("size")==null){
-            map.put("size",6);
+            map.put("size",7);
         }
 
         //所有博客分页查询
