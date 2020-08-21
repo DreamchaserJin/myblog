@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: jinhaolin
-    url: jdbc:mysql://121.41.231.230:3306/myblog?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/myblog?serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5
@@ -12,16 +12,21 @@ spring:
     timeBetweenEvictionRunsMillis: 60000
     minEvictableIdleTimeMillis: 300000
     validationQuery: SELECT 1 FROM DUAL
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    filters: stat,wall,log4j
-    maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     server:
     port: 9090
+    testWhileIdle: true
+    testOnReturn: false
+    testOnBorrow: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
+    filters: stat, wall, log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    #超时回收机制
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    logAbandoned: false
   banner:
     location: banner.txt
   thymeleaf:

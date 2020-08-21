@@ -27,7 +27,7 @@ public class Blog {
     private Integer type;
 
     /** 浏览量 */
-    private Integer views=563;
+    private Integer views=0;
 
     /** 标签 */
     private String tags;

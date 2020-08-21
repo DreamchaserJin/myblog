@@ -48,6 +48,9 @@ public class BlogCombinationServiceImpl implements BlogCombinationService {
     @Override
     public BlogCombination findBlogCombinationById(Integer blogId) {
         Blog blog=blogMapper.findBlogById(blogId);
+        //浏览数+1
+        blog.setViews(blog.getViews()+1);
+        blogMapper.updateBlog(blog);
         return getBlogCombination(blog);
     }
 

@@ -176,7 +176,7 @@ public class PageController {
             map.replace("begin",0);
         }
         if (map.get("size")==null){
-            map.put("size",6);
+            map.put("size",8);
         }
 
         //所有博客分页查询
@@ -195,6 +195,7 @@ public class PageController {
         map.put("isRecommend",1);
         mv.addObject("recommendedBlogs",blogService.findBlogByConditionVisible(map));
 
+        //为了显示博客数量
         List<Blog>blogs=blogService.findBlogAllVisible();
         mv.addObject("number",blogs.size());
 
