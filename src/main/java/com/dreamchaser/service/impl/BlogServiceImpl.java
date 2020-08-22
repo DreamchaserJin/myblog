@@ -66,6 +66,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public int updateBlog(Blog blog) {
+        blog.setViews(null);
         return blogMapper.updateBlog(blog);
     }
 
@@ -105,8 +106,11 @@ public class BlogServiceImpl implements BlogService {
             tagMapper.updateTag(tag);
         }
         //处理评论变化
-        if (i==-1){
-            commentMapper.deleteCommentByIds(TagUtil.stringTolist(blog.getComments()));
+        if (i==-1 ){
+            String comments=blog.getComments();
+            if (comments!=null){
+                commentMapper.deleteCommentByIds(TagUtil.stringTolist(comments));
+            }
         }
     }
 }
