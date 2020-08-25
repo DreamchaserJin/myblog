@@ -239,6 +239,9 @@ public class PageController {
             map.put("size",6);
         }
         mv.setViewName("tags");
+
+        //加上","才能保证查找的tagId准确，否则会出现找的明明是9，结果显示是19
+        map.put("tags",","+String.valueOf(map.get("tags"))+",");
         mv.addObject("blogs",blogCombinationService.findBlogCombinationByConditionVisible(MapUtil.handle(map)));
         mv.addObject("begin",map.get("begin"));
         mv.addObject("size",map.get("size"));

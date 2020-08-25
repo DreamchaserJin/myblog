@@ -18,6 +18,8 @@ public class BlogCtroller {
     @PostMapping(value = "/blog")
     public ModelAndView  insertBlog(Blog blog){
         ModelAndView mv=new ModelAndView();
+        //配合查找
+        blog.setTags(","+blog.getTags()+",");
         mv.setViewName("admin/tip");
         if (blogService.addBlog(blog)==1){
             mv.addObject("message","博客保存成功!");
@@ -39,6 +41,7 @@ public class BlogCtroller {
     }
     @PutMapping(value = "/blog")
     public ModelAndView  update(Blog blog){
+        blog.setTags(","+blog.getTags()+",");
         ModelAndView mv=new ModelAndView();
         mv.setViewName("admin/tip");
         if (blogService.updateBlog(blog)==1){

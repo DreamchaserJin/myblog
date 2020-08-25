@@ -12,7 +12,9 @@ public class TagUtil {
         List<Integer> integers=new ArrayList<>();
         String[] split = s.split(",");
         for (String s1:split){
-            integers.add(Integer.parseInt(s1));
+            if (!s1.equals("")){
+                integers.add(Integer.parseInt(s1));
+            }
         }
         return integers;
     }
