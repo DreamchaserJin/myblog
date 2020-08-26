@@ -39,7 +39,7 @@ lombok(简化部分代码插件)、animate.css-master(动画效果)、editor.md-
 ## 三、设计思路
 接下来，我来讲讲我是如何一步一步来设计后台，当然过程仅供参考，勿喷。
 
-### 1.背景
+### 1.根据实际背景制定相应的策略
 
 首先开始设计的时候我已经完成了前端页面的制作
 
@@ -69,7 +69,8 @@ lombok(简化部分代码插件)、animate.css-master(动画效果)、editor.md-
 建完表后我开始搭建框架，先把最基础的那些建出来，分出最基本的Mapper（Dao）层、Service层、Controller层，pojo层（实体类），然后把写好的前端页面给搬过来，再配置所需要的依赖。经过一系列操作后，最基础的框架搭成了（SpringBoot已经简化了很多很多，这个操作还是蛮快的）。
 
 然后再借助tablego神器，直接生成实体类和相应的mapper文件（当然接口还是要自己写的）
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726110633679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)然后再对接口加些基本的增删改查操作。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726110633679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+然后再对接口加些基本的增删改查操作。
 
 到此基本的框架已经出来了，接下来的不过是根据页面实现相应的功能。
 
@@ -79,7 +80,7 @@ lombok(简化部分代码插件)、animate.css-master(动画效果)、editor.md-
 
 举个例子，比如前端有个分页查询的需求，后端需根据查询的条件和分页来返回数据，如果说将这个查询和分页分开成为多个接口，那么系统将很繁杂，尤其是restful风格，难道你要对同一个资源针对不同情况命名多次？这显然不现实，所以你要解决的问题就是如何做到一个接口应对多种不同情况。
 
-我的解决思路是采用map来接收前端数据，如果map中有相应的数据则做相应的处理。当然这需要前端的配合，不过前后端都是我，规矩自然由我来定。**前后端不分离好处就在于此，但坏处也显而易见，后端承担前端的部分工作，那么系统复杂度会极度攀升。**
+我的解决思路是采用map来接收前端数据，如果map中有相应的数据则做相应的处理。当然这需要前端的配合，不过前后端都是我写的，规矩自然由我来定。**前后端不分离好处就在于此，但坏处也显而易见，后端承担前端的部分工作，那么系统复杂度会极度攀升。**
 
 说完设计接口，接下来要注意的就是一些细节的地方，比如前端没有传回相应的数据，但是如果将实体类传入做增删改查，那么没有数据的部分就是为null，而你又想要默认值，那么你要么在实体类中加默认值，要么别用实体类，用map传值。再比如null的处理，String和Integer的处理。这些都是细节，但往往出bug的都是这些细节！！！
 
@@ -89,7 +90,7 @@ lombok(简化部分代码插件)、animate.css-master(动画效果)、editor.md-
 后来针对页面做出了点调整和优化，将修改页和新增页合为一体，随后修改了我的设计图
 ![前端设计图（修改后）](https://img-blog.csdnimg.cn/20200726113411208.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 
-![根据页面写出功能（修改后）](https://img-blog.csdnimg.cn/20200726113417168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)再往后，就是一步一步写相应页面的代码了，一开始遇到很多问题，写了两个页面就花了我四天，不过解决了相应的问题后，后面的页面就写的很快了，前前后后花了半个月时间，终于完成。在这个过程中我查了无数的博客，学到了很多很多，**不得不说项目时最好的提升方式**。
+![根据页面写出功能（修改后）](https://img-blog.csdnimg.cn/20200726113417168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)再往后，就是一步一步写相应页面的代码了，一开始遇到很多问题，写了两个页面就花了我四天，不过解决了相应的问题后，后面的页面就写的很快了，前前后后花了半个月时间，终于完成。在这个过程中我查了无数的博客，学到了很多很多，**不得不说做项目是最好的提升方式**。
 
 哦，对了，跟你们分享一下我的习惯，我写代码的时候一般都会把遇到的问题记录下来，做出总结，前一天没有完成的任务我也会记录下来，以便第二天工作的开展，以下是我制作博客的文件夹
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726121956120.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
@@ -251,7 +252,8 @@ user表结构：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726164709558.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726164639540.png)这两者是有区别的！不然你的js操作都没用。。。后者才能成功导入，不能以/>结尾。别问我为什么知道的！问就是老天可怜我的！
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726164639540.png)
+这两者是有区别的！不然你的js操作都没用。。。后者才能成功导入，不能以/>结尾。别问我为什么知道的！问就是老天可怜我的！
 
 ### 2.maven项目的静态资源问题
 当你发现SpringBoot给你报无数据源，可你明明在配置中配置了时，不要怀疑，点开target文件，看看里面是否有你的配置文件！
@@ -3655,7 +3657,53 @@ mybatis:
 ### 归档页
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200726174544957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
 ## 九、博客部署
-此部分以后再补，服务器还没租呢QAQ
+这个部分我从租服务器开始讲，直至部署完成！
+### 1、租服务器
+这里我选择阿里云的服务器来进行演示
+首先把你的账号注册完后打开活动页面，找到云翼计划（因为我是学生，有学生优惠），选择你需要的服务器，我这里选择的是ecs云服务器。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151040954.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+购买支付后打开实例详情
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151655763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+### 2、连接服务器
+点击更多设置你的密码，然后复制公网ip，打开远程桌面连接
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807151815714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)输入你的用户名（windows用户名默认是administrator，linux默认是root）和密码即可远程连接至服务器。
+
+### 3、配置服务器环境
+开始安装mysql数据库，以下是下载地址
+https://dev.mysql.com/downloads/file/?id=497106
+
+具体操作看这篇博文
+https://blog.csdn.net/NOWSHUT/article/details/107722623
+
+安装Navicat，创建myblog数据库，在此数据库中运行sql文件
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152410985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+
+把你的jdk复制粘贴至服务器，然后配上环境变量
+
+### 4、把项目打成jar包发布至服务器
+在pom.xml中把打包方式设置为jar（`<packaging>jar</packaging>`
+），使用package命令，然后你的target目录下就会出现一个jar文件
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152549638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+将其复制粘贴至服务器上，选择你想要的存储的文件夹下，这里我直接选择c盘（不过建议大家还是创建个文件夹比较好）
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152745642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+在上面地址栏中输入cmd打开命令行，
+输入：java -jar blog.jar
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807152946507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+启动成功！
+
+### 5、设置服务器安全组
+其实就是设置外网能访问的端口，
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020080715311658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807153121357.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+
+不知道怎么打开这个界面的可以看这里https://developer.aliyun.com/article/702814
+
+### 6、访问项目
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200807153336115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MTAxODY5,size_16,color_FFFFFF,t_70)
+博客部署成功了！
+
 
 ## 十、总结和收获
 这个人博客系统总计耗时半个月，前端页面花了3天，后端设计编写花了12天。总计好多行代码QAQ
@@ -3670,10 +3718,24 @@ mybatis:
 
 这也算是我正式写app后端之前的一种锻炼吧！
 
+
 也希望未来的我能不忘初心，砥砺前行！
 
 谨以此记，共勉！
 
+该项目源码已上传至码云，[项目地址](https://gitee.com/dreamchasers/myblog)，需要的可以自行下载，对Java学习感兴趣的也可以加入q群1028457867，我们一起交流学习！
+
+最后，欢迎访问[我的博客](http://121.41.231.230:9090/index)！
+
 如果对此项目有什么疑惑或者建议，欢迎大家在评论区评论指正。
 
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
+### 项目更新日志
+2020.8.7 修复路径错误引发的bug，优化了配置属性，新增运行环境配置，添加了博客介绍
+
+2020.8.14 修复添加标签分类时博客数量为空的bug 
+
+2020.8.21 优化展示效果，完善浏览数功能 
+
+2020.8.22  修复更新博客后浏览量归零的bug,修复无法删除博客的bug
