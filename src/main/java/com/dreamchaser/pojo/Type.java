@@ -20,7 +20,7 @@ public class Type implements java.io.Serializable {
     private String introduction;
 
     /** 博客数量 */
-    private Integer number=0;
+    private Integer number=null;
 
     /** 更新时间 */
     private Date date;

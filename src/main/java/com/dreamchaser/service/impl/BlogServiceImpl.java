@@ -9,11 +9,13 @@ import com.dreamchaser.pojo.Tag;
 import com.dreamchaser.pojo.Type;
 import com.dreamchaser.service.BlogService;
 import com.dreamchaser.utils.TagUtil;
+import com.mysql.cj.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 @Service
 public class BlogServiceImpl implements BlogService {

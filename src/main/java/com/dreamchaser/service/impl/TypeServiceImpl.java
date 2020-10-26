@@ -39,6 +39,7 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public int addType(Type type) {
         type.setDate(new Date());
+        type.setNumber(0);
         return typeMapper.insertType(type);
     }
 
