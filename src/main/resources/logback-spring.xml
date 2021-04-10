@@ -22,6 +22,7 @@
 
     </appender>
 
+
     <!--输出到DEBUG文件-->
     <appender name="debug_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -125,12 +126,16 @@
     <springProfile name="default,local,dev">
         <root level="info">
             <appender-ref ref="console"/>
+            <appender-ref ref="debug_file"/>
+            <appender-ref ref="info_file"/>
+            <appender-ref ref="warn_file"/>
+            <appender-ref ref="error_file"/>
         </root>
-<!--        <logger name="com.dreamchaser" level="debug"/>-->
+        <logger name="com.dreamchaser.mapper" level="debug"/>
     </springProfile>
 
 
-    <springProfile name="prod,pre,test">
+    <springProfile name="prod,pre,test,server">
         <root level="info">
             <appender-ref ref="console"/>
             <appender-ref ref="debug_file"/>
@@ -139,8 +144,6 @@
             <appender-ref ref="error_file"/>
 
         </root>
-<!--        <logger name="com.dreamchaser.mapper" level="debug"/>-->
+        <logger name="com.dreamchaser.mapper" level="debug"/>
     </springProfile>
-    <!-- endregion -->
-
 </configuration>

@@ -40,4 +40,7 @@ server:
   port: 9090
 mybatis:
   type-aliases-package: com.dreamchaser.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    log-prefix: mapper.
 

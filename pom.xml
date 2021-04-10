@@ -32,6 +32,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.23</version>
@@ -85,8 +90,6 @@
             <artifactId>commonmark-ext-gfm-tables</artifactId>
             <version>0.15.1</version>
         </dependency>
-
-
 
     </dependencies>
 
