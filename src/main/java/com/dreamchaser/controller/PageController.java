@@ -166,7 +166,7 @@ public class PageController {
         return getModelAndView(mv);
     }
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public ModelAndView index(@RequestParam Map<String,Object> map){
         ModelAndView mv=new ModelAndView();
         //预处理

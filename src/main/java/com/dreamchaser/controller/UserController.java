@@ -39,6 +39,7 @@ public class UserController {
     public ModelAndView logOut(HttpSession session){
         ModelAndView modelAndView=new ModelAndView();
         session.removeAttribute("user");
+        session.invalidate();
         modelAndView.addObject("message","用户退出成功!");
         modelAndView.setViewName("admin/tip");
         return modelAndView;
