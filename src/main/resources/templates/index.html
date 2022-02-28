@@ -100,10 +100,10 @@
                     <div class="ui bottom attached segment">
                         <div class="ui middle aligned grid two column">
                             <div class="column">
-                                <a class="ui button basic mini teal" th:href="@{'/index?begin='+${begin-size}+'&size='+${size}}">上一页</a>
+                                <a class="ui button basic mini teal" th:href="@{'?begin='+${begin-size}+'&size='+${size}}">上一页</a>
                             </div>
                             <div class="column right aligned">
-                                <a class="ui button basic mini teal" th:href="@{'/index?begin='+${begin+size}+'&size='+${size}}">下一页</a>
+                                <a class="ui button basic mini teal" th:href="@{'?begin='+${begin+size}+'&size='+${size}}">下一页</a>
                             </div>
                         </div>
                     </div>
