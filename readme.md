@@ -3725,7 +3725,7 @@ https://blog.csdn.net/NOWSHUT/article/details/107722623
 
 该项目源码已上传至码云，[项目地址](https://gitee.com/dreamchasers/myblog)，需要的可以自行下载，对Java学习感兴趣的也可以加入q群1028457867，我们一起交流学习！
 
-最后，欢迎访问[我的博客](http://dreamchaser.net.cn:9090/index)！
+最后，欢迎访问[我的博客](http://dreamchaser.net.cn)！
 
 如果对此项目有什么疑惑或者建议，欢迎大家在评论区评论指正。
 
